@@ -2,12 +2,22 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #0f172a;
+  --card: #f8fafc;
+  --card-border: #e2e8f0;
+  --muted: #64748b;
+  --accent: #f59e0b;
+  --accent-dark: #d97706;
 }
 
 .dark {
-  --background: #0a0a0a;
-  --foreground: #ededed;
+  --background: #0a0a0f;
+  --foreground: #f1f5f9;
+  --card: #12121a;
+  --card-border: #1e1e2e;
+  --muted: #94a3b8;
+  --accent: #fbbf24;
+  --accent-dark: #f59e0b;
 }
 
 @theme inline {
@@ -19,20 +29,15 @@
 
 * {
   scrollbar-width: thin;
-  scrollbar-color: #f59e0b transparent;
+  scrollbar-color: var(--accent) transparent;
 }
 
 *::-webkit-scrollbar {
   width: 6px;
-  height: 6px;
-}
-
-*::-webkit-scrollbar-track {
-  background: transparent;
 }
 
 *::-webkit-scrollbar-thumb {
-  background: #f59e0b;
+  background: var(--accent);
   border-radius: 3px;
 }
 
@@ -43,34 +48,61 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), system-ui, sans-serif;
   overflow-x: hidden;
+  transition: background-color 0.5s ease, color 0.5s ease;
 }
 
-/* Selection highlight */
 ::selection {
   background: rgba(245, 158, 11, 0.3);
-  color: inherit;
 }
 
-/* Loading animation */
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
+/* Animated gradient bg for hero */
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
 
-.shimmer {
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(245, 158, 11, 0.1) 50%,
-    transparent 100%
-  );
-  background-size: 200% 100%;
-  animation: shimmer 2s infinite;
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 8s ease infinite;
 }
 
-/* Canvas container */
-canvas {
-  touch-action: none;
+/* Truck animation for hero */
+@keyframes drive {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(calc(100vw + 100%)); }
+}
+
+.animate-drive {
+  animation: drive 12s linear infinite;
+}
+
+@keyframes drive-reverse {
+  0% { transform: translateX(calc(100vw + 100%)) scaleX(-1); }
+  100% { transform: translateX(-100%) scaleX(-1); }
+}
+
+.animate-drive-reverse {
+  animation: drive-reverse 18s linear infinite;
+}
+
+/* Road dashes */
+@keyframes dash-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-48px); }
+}
+
+.animate-dashes {
+  animation: dash-scroll 0.6s linear infinite;
+}
+
+/* Float animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
 }

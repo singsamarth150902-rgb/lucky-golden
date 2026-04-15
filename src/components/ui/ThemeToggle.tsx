@@ -9,11 +9,12 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={toggleTheme}
-      className="relative w-14 h-7 rounded-full transition-colors duration-500 focus:outline-none focus:ring-2 focus:ring-yellow-400/50"
+      className="relative w-14 h-7 rounded-full transition-colors duration-500 focus:outline-none focus:ring-2 focus:ring-amber-400/50"
       style={{
-        background: theme === "dark"
-          ? "linear-gradient(135deg, #1e293b, #334155)"
-          : "linear-gradient(135deg, #93c5fd, #60a5fa)",
+        background:
+          theme === "dark"
+            ? "linear-gradient(135deg, #1e293b, #334155)"
+            : "linear-gradient(135deg, #93c5fd, #60a5fa)",
       }}
       aria-label="Toggle theme"
     >
@@ -22,12 +23,13 @@ export default function ThemeToggle() {
         animate={{ left: theme === "dark" ? "2px" : "30px" }}
         transition={{ type: "spring", stiffness: 500, damping: 30 }}
         style={{
-          background: theme === "dark"
-            ? "linear-gradient(135deg, #1e3a5f, #0f172a)"
-            : "linear-gradient(135deg, #fbbf24, #f59e0b)",
+          background:
+            theme === "dark"
+              ? "linear-gradient(135deg, #1e3a5f, #0f172a)"
+              : "linear-gradient(135deg, #fbbf24, #f59e0b)",
         }}
       >
-        {theme === "dark" ? "🌙" : "☀️"}
+        {theme === "dark" ? "\u{1F319}" : "\u{2600}\u{FE0F}"}
       </motion.div>
     </button>
   );

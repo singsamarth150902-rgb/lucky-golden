@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Lucky Golden | Premium Transport Services",
   description:
-    "Lucky Golden Transport Services - Connecting 8 strategic hubs with real-time 3D fleet tracking. Premium logistics and transportation solutions.",
+    "Lucky Golden Transport Services — Connecting 8 strategic hubs with reliability, speed, and premium logistics solutions.",
 };
 
 export default function RootLayout({
