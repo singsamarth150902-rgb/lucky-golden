@@ -4,107 +4,84 @@ import { motion } from "framer-motion";
 import { useTheme } from "@/context/ThemeContext";
 
 const SERVICES = [
-  {
-    icon: "M1 3h15v13H1zM16 8h4l3 3v5h-7zM5.5 21a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM18.5 21a2.5 2.5 0 100-5 2.5 2.5 0 000 5z",
-    title: "Fleet Transport",
-    desc: "Modern fleet operating across all 8 hubs with real-time GPS tracking and optimized routing for maximum efficiency.",
-  },
-  {
-    icon: "M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0zM12 10a3 3 0 100-6 3 3 0 000 6z",
-    title: "8-Hub Network",
-    desc: "Strategically located hubs ensuring complete coverage and seamless connectivity between all major transport points.",
-  },
-  {
-    icon: "M12 2a10 10 0 100 20 10 10 0 000-20zM12 6v6l4 2",
-    title: "On-Time Delivery",
-    desc: "99.5% on-time delivery rate powered by optimized scheduling and dedicated route management across every hub.",
-  },
-  {
-    icon: "M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z",
-    title: "Secure Handling",
-    desc: "End-to-end cargo security with real-time monitoring, sealed containers, and comprehensive insurance coverage.",
-  },
-  {
-    icon: "M22 12h-4l-3 9-6-18-3 9H2",
-    title: "Live Tracking",
-    desc: "Real-time visibility of all fleet movements. Track any shipment from pickup to delivery with pinpoint accuracy.",
-  },
-  {
-    icon: "M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 7a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75",
-    title: "24/7 Support",
-    desc: "Dedicated support team at every hub around the clock. Enterprise account managers for tailored logistics solutions.",
-  },
+  { num: "01", icon: "M1 3h15v13H1zM16 8h4l3 3v5h-7V8zM5.5 21a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM18.5 21a2.5 2.5 0 100-5 2.5 2.5 0 000 5z",
+    title: "Road Transport", desc: "Full truckload and part-load services across all 8 hubs with GPS tracking and insured cargo movement." },
+  { num: "02", icon: "M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0zM12 10a3 3 0 100-6 3 3 0 000 6z",
+    title: "Hub-to-Hub Express", desc: "Direct hub-to-hub express routes for time-critical shipments with guaranteed same-day or next-day delivery." },
+  { num: "03", icon: "M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2M12 11a4 4 0 100-8 4 4 0 000 8z",
+    title: "Dedicated Fleet", desc: "Assign dedicated vehicles for your regular routes. Consistent drivers, fixed schedules, and priority handling." },
+  { num: "04", icon: "M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z",
+    title: "Secure Logistics", desc: "High-value and sensitive cargo transported with sealed containers, real-time monitoring, and full insurance." },
+  { num: "05", icon: "M22 12h-4l-3 9-6-18-3 9H2",
+    title: "Live Tracking", desc: "Real-time shipment visibility from pickup to delivery. SMS and email notifications at every milestone." },
+  { num: "06", icon: "M4 15s1-1 4-1 5 0 3 1 7 1 4 0 4-1 4-1V3s-1 1-4 1-5 0-3-1-7-1-4 0-4 1-4 1z",
+    title: "Warehousing", desc: "Short-term and long-term warehousing at each hub location with inventory management and order fulfillment." },
 ];
 
 export default function ServicesSection() {
   const { theme } = useTheme();
 
   return (
-    <section
-      id="services"
-      className={`py-24 sm:py-32 px-6 transition-colors duration-500 ${
-        theme === "dark" ? "bg-[#08080d]" : "bg-gray-50"
-      }`}
-    >
-      <div className="max-w-6xl mx-auto">
+    <section id="services" className={`py-24 sm:py-32 px-6 transition-colors duration-500 ${
+      theme === "dark" ? "bg-[var(--bg-alt)]" : "bg-gray-50"
+    }`}>
+      <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.5 }}
           className="text-center mb-14"
         >
-          <span className="text-amber-500 font-bold text-sm tracking-[0.2em] uppercase">
+          <span className="text-[var(--accent)] font-bold text-sm tracking-[0.2em] uppercase">
             What We Offer
           </span>
-          <h2 className="text-4xl sm:text-5xl font-black mt-3 mb-4 text-[var(--foreground)]">
+          <div className="section-line mx-auto mt-3 mb-5" />
+          <h2 className="text-3xl sm:text-4xl font-black text-[var(--fg)]">
             Our Services
           </h2>
-          <p className="max-w-xl mx-auto text-[var(--muted)] text-lg">
-            Comprehensive transportation solutions connecting all 8 hubs
-            with reliability, speed, and cutting-edge logistics.
+          <p className="max-w-xl mx-auto text-[var(--muted)] mt-4">
+            End-to-end logistics solutions tailored for businesses of every size,
+            backed by our 8-hub nationwide network.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {SERVICES.map((service, i) => (
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {SERVICES.map((s, i) => (
             <motion.div
-              key={service.title}
+              key={s.num}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.4, delay: i * 0.08 }}
+              transition={{ delay: i * 0.07 }}
               whileHover={{ y: -6 }}
-              className={`group relative p-7 rounded-2xl border transition-all duration-300 ${
+              className={`group relative p-7 rounded-2xl border transition-all duration-300 overflow-hidden ${
                 theme === "dark"
-                  ? "bg-[var(--card)] border-[var(--card-border)] hover:border-amber-400/25"
-                  : "bg-white border-gray-200 hover:border-amber-400 shadow-sm hover:shadow-lg"
+                  ? "bg-[var(--card)] border-[var(--card-border)] hover:border-[var(--accent)]/30"
+                  : "bg-white border-gray-200 hover:border-[var(--accent)] shadow-sm hover:shadow-lg"
               }`}
             >
-              {/* Hover glow */}
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-amber-400/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              {/* Number watermark */}
+              <span className="absolute top-4 right-5 text-5xl font-black text-[var(--accent)]/[0.06] leading-none select-none">
+                {s.num}
+              </span>
 
-              <div className="relative">
-                <div
-                  className={`inline-flex p-3 rounded-xl mb-5 transition-colors duration-300 group-hover:bg-amber-400/10 ${
-                    theme === "dark" ? "bg-white/5 text-amber-400" : "bg-amber-50 text-amber-600"
-                  }`}
-                >
-                  <svg
-                    width="24" height="24" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
-                  >
-                    <path d={service.icon} />
-                  </svg>
-                </div>
+              {/* Top accent line on hover */}
+              <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-amber-400 to-amber-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
 
-                <h3 className="text-lg font-bold mb-2 text-[var(--foreground)]">
-                  {service.title}
-                </h3>
-                <p className="text-sm leading-relaxed text-[var(--muted)]">
-                  {service.desc}
-                </p>
+              <div className={`inline-flex p-3 rounded-xl mb-5 transition-colors group-hover:bg-[var(--accent-bg)] ${
+                theme === "dark" ? "bg-white/5 text-[var(--accent)]" : "bg-amber-50 text-amber-600"
+              }`}>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d={s.icon} />
+                </svg>
               </div>
+              <h3 className="text-lg font-bold text-[var(--fg)] mb-2">{s.title}</h3>
+              <p className="text-sm text-[var(--muted)] leading-relaxed">{s.desc}</p>
+
+              <a href="#contact" className="inline-flex items-center gap-1 mt-5 text-sm font-semibold text-[var(--accent)] opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+                Learn More
+                <svg width="14" height="14" viewBox="0 0 16 16"><path d="M6 3l5 5-5 5" stroke="currentColor" strokeWidth="2" fill="none" /></svg>
+              </a>
             </motion.div>
           ))}
         </div>
