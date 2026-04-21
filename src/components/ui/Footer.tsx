@@ -2,7 +2,6 @@
 
 import { useTheme } from "@/context/ThemeContext";
 
-const HUBS = ["Alpha", "Bravo", "Charlie", "Delta", "Echo", "Foxtrot", "Golf", "Hotel"];
 const SERVICES_LINKS = ["Road Transport", "Hub-to-Hub Express", "Dedicated Fleet", "Secure Logistics", "Live Tracking", "Warehousing"];
 const QUICK_LINKS = ["Home", "About", "Services", "Network", "Contact"];
 
